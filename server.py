@@ -6,6 +6,8 @@ app = Flask("Emotion Detector")
 def sent_emotion():
     statement_to_eval = request.args.get("textToAnalyze")
     response = emotion_detector(statement_to_eval)
+    if response['dominant_emotion'] is None:
+        return f"Invalid text! Please try again!"
     anger = response['anger']
     disgust = response['disgust']
     fear = response['fear']
