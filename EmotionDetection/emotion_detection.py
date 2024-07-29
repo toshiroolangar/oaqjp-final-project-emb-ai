@@ -14,7 +14,6 @@ def emotion_detector(text_to_analyze):
     joy_score = json_response['emotionPredictions'][0]['emotion']['joy']
     sadness_score = json_response['emotionPredictions'][0]['emotion']['sadness']
     dominant_emotion, probability = max(json_response_dict.items(), key=operator.itemgetter(1))
-
     if response.status_code == 400:
         return {'anger' : None,
                 'disgust' : None,
@@ -22,7 +21,7 @@ def emotion_detector(text_to_analyze):
                 'joy' : None,
                 'sadness' : None,
                 'dominant_emotion' : None
-        }
+        }    
     return {'anger' : anger_score,
             'disgust' : disgust_score,
             'fear' : fear_score,
